@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:{{ name }}/config/color.dart';
+import 'package:{{ name }}/config/images.dart';
+import 'package:{{ name }}/resources/views/components/app-logo.dart';
+
+class Welcome extends StatelessWidget {
+  const Welcome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welcome to Tomato'),
+      ),
+      body: const Center(
+        child: Column(
+          children: <Widget> [
+            AppLogo(AppImages.logo),
+            Text(
+              'Welcome to Tomato',
+              style: TextStyle(fontSize: 24, fontFamily: 'IBM', color: AppColors.gery),
+            )
+          ],
+        )
+      ),
+    );
+  }
+}

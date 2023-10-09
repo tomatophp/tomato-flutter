@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+
+class AppLogo extends StatelessWidget {
+  const AppLogo(this.path);
+
+  final String path;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(path);
+  }
+}
