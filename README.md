@@ -19,11 +19,6 @@ and you must have at least one emulator or device connected to your system
 ```bash
 composer require tomatophp/tomato-flutter
 ```
-after install your package please run this command
-
-```bash
-php artisan tomato-flutter:install
-```
 
 ## Generate App
 
