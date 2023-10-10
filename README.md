@@ -1,3 +1,5 @@
+![Screenshot](https://github.com/tomatophp/tomato-flutter/blob/master/art/screenshot.png)
+
 # Tomato flutter
 
 Build a Flutter App Using Artisan Commands, the generated app will be an HMVC app with a clean architecture and a powerful CRUD generator.
@@ -57,11 +59,11 @@ php artisan tomato-flutter:service
 
 ## Support
 
-you can join our discord server to get support [TomatoPHP](https://discord.gg/Xqmt35Uh)
+you can join our discord server to get support [TomatoPHP](https://discord.gg/VZc8nBJ3ZU)
 
 ## Docs
 
-you can check docs of this package on [Docs](https://docs.tomatophp.com/plugins/laravel-package-generator)
+you can check docs of this package on [Docs](https://docs.tomatophp.com/plugins/tomato-flutter)
 
 ## Changelog
 
