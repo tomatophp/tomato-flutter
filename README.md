@@ -1,6 +1,16 @@
 # Tomato flutter
 
-your package description will go here
+Build a Flutter App Using Artisan Commands, the generated app will be an HMVC app with a clean architecture and a powerful CRUD generator.
+
+## Requirements
+
+please check that you have flutter installed and working on your system by check 
+
+```bash
+flutter doctor
+```
+
+and you must have at least one emulator or device connected to your system
 
 ## Installation
 
@@ -13,30 +23,36 @@ after install your package please run this command
 php artisan tomato-flutter:install
 ```
 
-## Publish Assets
+## Generate App
 
-you can publish config file by use this command
+to generate a new app you just need to run this command
 
 ```bash
-php artisan vendor:publish --tag="tomato-flutter-config"
+php artisan tomato-flutter:generate
 ```
 
-you can publish views file by use this command
+## Generate Module
+
+to generate a new module you just need to run this command
 
 ```bash
-php artisan vendor:publish --tag="tomato-flutter-views"
+php artisan tomato-flutter:module
 ```
 
-you can publish languages file by use this command
+## Generate Controller
+
+to generate a new controller you just need to run this command
 
 ```bash
-php artisan vendor:publish --tag="tomato-flutter-lang"
+php artisan tomato-flutter:controller
 ```
 
-you can publish migrations file by use this command
+## Generate Service
+
+to generate a new service you just need to run this command
 
 ```bash
-php artisan vendor:publish --tag="tomato-flutter-migrations"
+php artisan tomato-flutter:service
 ```
 
 ## Support
@@ -57,7 +73,8 @@ Please see [SECURITY](SECURITY.md) for more information about security.
 
 ## Credits
 
-- [Tomatophp](mailto:info@3x1.io)
+- [Fady Mondy](mailto:info@3x1.io)
+- [flutter_fusion](https://github.com/thedevsbuddy/flutter_fusion)
 
 ## License
 

@@ -3,7 +3,10 @@
 namespace TomatoPHP\TomatoFlutter;
 
 use Illuminate\Support\ServiceProvider;
-use TomatoPHP\TomatoFlutter\Console\TomatoFlutterGenerate;
+use TomatoPHP\TomatoFlutter\Console\TomatoFlutterGenerateApp;
+use TomatoPHP\TomatoFlutter\Console\TomatoFlutterGenerateController;
+use TomatoPHP\TomatoFlutter\Console\TomatoFlutterGenerateModule;
+use TomatoPHP\TomatoFlutter\Console\TomatoFlutterGenerateService;
 
 
 class TomatoFlutterServiceProvider extends ServiceProvider
@@ -12,7 +15,10 @@ class TomatoFlutterServiceProvider extends ServiceProvider
     {
         //Register generate command
         $this->commands([
-           TomatoFlutterGenerate::class
+            TomatoFlutterGenerateApp::class,
+            TomatoFlutterGenerateModule::class,
+            TomatoFlutterGenerateService::class,
+            TomatoFlutterGenerateController::class
         ]);
 
         //Register Config file
