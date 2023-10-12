@@ -6,7 +6,7 @@ import 'MockAuthService.dart';
 
 abstract class AuthService {
   /// Configure if Mock is enabled or not
-  static const MOCK_ENABLED = true;
+  static const MOCK_ENABLED = false;
 
   /// Create and get the instance of [AuthService]
   static AuthService get instance {
@@ -22,6 +22,9 @@ abstract class AuthService {
 
   /// Login the user
   Future<ApiResponse> login({required String client, required Map<String, dynamic> body});
+
+  /// Login the user
+  Future<ApiResponse> user(String client);
 
   /// Registers user
   Future<ApiResponse> register({required String client, required Map<String, dynamic> body});

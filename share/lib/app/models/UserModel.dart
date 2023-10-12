@@ -5,6 +5,7 @@ class UserModel {
     this.username,
     this.email,
     this.password,
+    this.password_confirmation,
     this.phone,
     this.avatar,
     this.gender,
@@ -15,6 +16,7 @@ class UserModel {
   String? username;
   String? email;
   String? password;
+  String? password_confirmation;
   String? phone;
   String? avatar;
   String? gender;
@@ -25,6 +27,7 @@ class UserModel {
     String? username,
     String? email,
     String? password,
+    String? password_confirmation,
     String? phone,
     String? avatar,
     String? gender,
@@ -35,6 +38,7 @@ class UserModel {
         username: username ?? this.username,
         email: email ?? this.email,
         password: password ?? this.password,
+        password_confirmation: password_confirmation ?? this.password_confirmation,
         phone: phone ?? this.phone,
         avatar: avatar ?? this.avatar,
         gender: gender ?? this.gender,
@@ -46,6 +50,7 @@ class UserModel {
         username: json["username"] == null ? null : json["username"],
         email: json["email"] == null ? null : json["email"],
         password: json["password"] == null ? null : json["password"],
+        password_confirmation: json["password_confirmation"] == null ? null : json["password_confirmation"],
         phone: json["phone"] == null ? null : json["phone"],
         avatar: json["avatar"] == null ? null : json["avatar"],
         gender: json["gender"] == null ? null : json["gender"],
@@ -57,6 +62,7 @@ class UserModel {
         "username": username == null ? null : username,
         "email": email == null ? null : email,
         "password": password == null ? null : password,
+        "password_confirmation": password_confirmation == null ? null : password_confirmation,
         "phone": phone == null ? null : phone,
         "avatar": avatar == null ? null : avatar,
         "gender": gender == null ? null : gender,

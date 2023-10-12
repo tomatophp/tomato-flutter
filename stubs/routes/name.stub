@@ -1,0 +1,7 @@
+class BlogRoutes {
+  static String get index => '/{{ moduleLower }}';
+  static String get {{ moduleLower }View => '/{{ moduleLower }/:id';
+  static String get {{ moduleLower }Create => '/{{ moduleLower }/create';
+  static String get {{ moduleLower }Edit => '/{{ moduleLower }/:id/edit';
+}
+

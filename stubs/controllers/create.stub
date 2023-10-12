@@ -1,0 +1,72 @@
+import '../../../modules/{{ module }}/{{ module }}Module.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ui_x/helpers/Toastr.dart';
+
+import '../../../models/ApiResponse.dart';
+import '../../../models/PaginationModel.dart';
+import '../../../shared/controllers/AppController.dart';
+import '../../../shared/views/errors/ErrorPage.dart';
+import '../services/{{ module }}Service.dart';
+
+class {{ module }}CreateController extends AppController {
+
+  /// Create and get the instance of the controller
+  static {{ module }}CreateController get instance {
+    if (!Get.isRegistered<{{ module }}CreateController>()) Get.replace({{ module }}CreateController());
+    return Get.find<{{ module }}CreateController>();
+  }
+
+  /// Initialise [{{ module }}Module] service
+  final {{ module }}Service _{{ moduleLower }}Service = {{ module }}Service.instance;
+
+  /// Inputs
+  GlobalKey<FormState> formKey = GlobalKey<FormState>(debugLabel: 'store{{ tableUpper }}');
+  {{ fields }}
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  Future<void> store() async {
+    String _client = "store{{ tableUpper }}";
+    if (!formKey.currentState!.validate()) {
+      Toastr.show(message: "Please fill all the required fields!");
+      return;
+    }
+
+    try {
+      /// Prepare form data to be sent to server
+      Map<String, dynamic> body = {
+        {{ jsonFields }}
+      };
+
+      /// Initialize the Service and request server
+      _{{ moduleLower }}Service.init(_client);
+
+      /// Call api to login user
+      ApiResponse response = await _{{ module }}Service.store(body, _client);
+
+      if (response.hasError()) {
+        Toastr.show(message: "${response.message}");
+        return;
+      }
+
+      Get.delete<{{ module }}Controller>();
+
+      Toastr.show(message: "${response.message}");
+
+      /// Close the Service and request server
+      _{{ module }}Service.close(_client);
+
+      formKey.currentState?.reset();
+
+      /// Redirect user
+      Get.offAllNamed({{ module }}Routes.index);
+    } on Exception catch (e) {
+      Get.to(() => ErrorPage(message: "${e.toString()}"));
+    }
+  }
+}
+

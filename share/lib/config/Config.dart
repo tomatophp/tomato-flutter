@@ -17,7 +17,7 @@ class Config {
   ///======================================
   /// API base url
   ///======================================
-  static String apiBaseUrl = "https://jsonplaceholder.typicode.com";
+  static String apiBaseUrl = "https://tomato.test/api";
 
   ///======================================
   /// App Name

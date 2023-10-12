@@ -12,26 +12,26 @@ class ApiResponse {
     this.data,
   });
 
-  String? status;
+  bool? status;
   String? message;
   String? validationError;
   dynamic data;
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
-        status: json["success"] == null ? "error" : json["success"].toString(),
+        status: json["success"],
         message: json["message"] == null ? null : json["message"],
         validationError: json["errors"] == null ? null : json['errors'][json["errors"].keys.first].first,
         data: json["data"] == null ? null : json["data"],
       );
 
   Map<String, dynamic> toJson() => {
-        "success": status == null ? "error" : status.toString(),
+        "success": status,
         "message": message == null ? null : message,
         "errors": validationError == null ? null : validationError,
         "data": data == null ? null : data,
       };
 
-  ApiResponse copyWith({String? status, String? message, dynamic validationError, dynamic data}) {
+  ApiResponse copyWith({bool? status, String? message, dynamic validationError, dynamic data}) {
     return ApiResponse(
       status: status ?? this.status,
       message: message ?? this.message,
@@ -40,11 +40,11 @@ class ApiResponse {
     );
   }
 
-  bool isOk() => status == "success";
+  bool isOk() => status == true;
 
-  bool isSuccessful() => status == 'success';
+  bool isSuccessful() => status == true;
 
-  bool hasError() => status == 'error';
+  bool hasError() => status == false;
 
   bool hasValidationErrors() => validationError != null;
 

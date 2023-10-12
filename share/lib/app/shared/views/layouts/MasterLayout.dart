@@ -1,9 +1,10 @@
+import '../../../shared/views/components/SideMenu.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/Config.dart';
 
 class MasterLayout extends StatelessWidget {
   final Widget body;
-  final Drawer? drawer;
+  final SideMenu? drawer;
   final Color? backgroundColor;
   final dynamic title;
   final List<Widget>? actions;

@@ -1,3 +1,4 @@
+import '../../../modules/Auth/AuthModule.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
@@ -6,6 +7,9 @@ import '../../../helpers/Global.dart';
 import '../../../shared/views/layouts/AuthLayout.dart';
 
 class RegisterPage extends StatelessWidget {
+  final RegisterController controller = Get.put(RegisterController());
+
+
   @override
   Widget build(BuildContext context) {
     var screen = Get.size;
@@ -44,12 +48,12 @@ class RegisterPage extends StatelessWidget {
                     ],
                   ),
                   Form(
-                    // key: auth.formKey,
+                    key: controller.formKey,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                       children: [
                         FormInput.text(
-                          controller: null,
+                          controller: controller.nameInput,
                           placeholder: "Name",
                           leading: Icon(Icons.person_outline),
                           validator: (value) =>
@@ -57,16 +61,16 @@ class RegisterPage extends StatelessWidget {
                         ),
                         SizedBox(height: 25),
                         FormInput.text(
-                          controller: null,
-                          placeholder: "Username",
-                          leading: Icon(Icons.alternate_email_outlined),
-                          validator: (value) => Validator("Username", value!)
+                          controller: controller.phoneInput,
+                          placeholder: "Phone",
+                          leading: Icon(Icons.phone),
+                          validator: (value) => Validator("phone", value!)
                               .required()
                               .validate(),
                         ),
                         SizedBox(height: 25),
                         FormInput.email(
-                          controller: null,
+                          controller: controller.emailInput,
                           placeholder: "Email",
                           leading: Icon(Icons.email_outlined),
                           validator: (value) => Validator("Email", value!)
@@ -76,7 +80,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                         SizedBox(height: 25),
                         FormInput.password(
-                          controller: null,
+                          controller: controller.passwordInput,
                           placeholder: "Password",
                           leading: Icon(Icons.lock_outline),
                           validator: (value) => Validator("Password", value!)
@@ -84,13 +88,22 @@ class RegisterPage extends StatelessWidget {
                               .validate(),
                         ),
                         SizedBox(height: 25),
+                        FormInput.password(
+                          controller: controller.confirmPasswordInput,
+                          placeholder: "Password Confirmation",
+                          leading: Icon(Icons.lock_outline),
+                          validator: (value) => Validator("Password Confirmation", value!)
+                              .required()
+                              .validate(),
+                        ),
+                        SizedBox(height: 25),
                         Button.block(
                           key: UniqueKey(),
                           label: "Register",
-                          onTap: (btn) {
-                            // btn.setBusy(true).setDisabled(true);
-                            // authController.login();
-                            // btn.setBusy(false).setDisabled(false);
+                          onTap: (ButtonController btn) {
+                            btn.setDisabled(true);
+                            controller.submit();
+                            btn.setDisabled(false);
                           },
                         ),
                         SizedBox(height: 16),

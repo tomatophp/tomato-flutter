@@ -1,0 +1,44 @@
+import '../../../helpers/Global.dart';
+import '../../../modules/Dashboard/DashboardModule.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../modules/Dashboard/routes/DashboardRoutes.dart';
+
+class SideMenu extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: [
+          UserAccountsDrawerHeader( // <-- SEE HERE
+            decoration: BoxDecoration(color: const Color(0xff764abc)),
+            accountName: Text(
+              auth.user.name ?? '',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            accountEmail: Text(
+              auth.user.email ?? '',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            title: const Text('Dashboard'),
+            leading: Icon(Icons.dashboard),
+            onTap: () {
+              Get.toNamed(DashboardRoutes.dashboard);
+              // Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

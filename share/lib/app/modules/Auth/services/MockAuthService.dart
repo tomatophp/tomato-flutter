@@ -66,4 +66,9 @@ class MockAuthService implements AuthService {
   Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body}) async {
     return await 300.milliseconds.delay(() => AuthData.loginSuccess);
   }
+
+  @override
+  Future<ApiResponse> user(String client) async {
+    return await 300.milliseconds.delay(() => AuthData.loginSuccess);
+  }
 }

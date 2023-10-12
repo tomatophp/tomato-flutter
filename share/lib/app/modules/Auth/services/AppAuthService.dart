@@ -27,6 +27,11 @@ class AppAuthService implements AuthService {
   }
 
   @override
+  Future<ApiResponse> user(String client) async {
+    return await _request.get('/profile', client: client, authenticate: true);
+  }
+
+  @override
   Future<ApiResponse> google({required String client}) {
     // TODO: implement google
     throw UnimplementedError();

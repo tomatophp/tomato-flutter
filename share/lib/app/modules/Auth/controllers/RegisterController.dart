@@ -25,11 +25,9 @@ class RegisterController extends AppController {
 
   /// Variables
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController firstNameInput = TextEditingController();
-  final TextEditingController lastNameInput = TextEditingController();
+  final TextEditingController nameInput = TextEditingController();
   final TextEditingController emailInput = TextEditingController();
   final TextEditingController phoneInput = TextEditingController();
-  final TextEditingController referralInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
   final TextEditingController confirmPasswordInput = TextEditingController();
 
@@ -39,15 +37,19 @@ class RegisterController extends AppController {
   }
 
   Future<void> submit() async {
-    if (!formKey.currentState!.validate()) return;
+    setBusy(true);
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
     String _client = "registerSubmit";
 
     try {
       Map<String, dynamic> body = UserModel(
-        name: firstNameInput.text,
-        email: emailInput.text,
-        password: passwordInput.text,
-        phone: phoneInput.text,
+        name: nameInput.text?? "",
+        email: emailInput.text?? "",
+        password: passwordInput.text?? "",
+        password_confirmation: confirmPasswordInput.text?? "",
+        phone: phoneInput.text?? "",
       ).toJson();
 
       /// Initialize the Service and request server
@@ -55,20 +57,24 @@ class RegisterController extends AppController {
 
       ApiResponse response = await _authService.register(body: body, client: _client);
 
-      if (response.hasError()) {
+      print(response.toJson());
+
+      if (response.hasError() || response.hasValidationErrors()) {
         Toastr.show(message: "${response.message}");
+        setBusy(false);
         return;
       }
 
       /// Close the Service and request server
       _authService.close(_client);
 
-      loginController.identifierInput.text = emailInput.text;
-      loginController.passwordInput.text = passwordInput.text;
+      Toastr.show(message: "${response.message}");
 
+      setBusy(false);
       /// Login the user after registration
-      await loginController.submit();
+      Get.offAllNamed(AuthRoutes.login);
     } on Exception catch (e) {
+      setBusy(false);
       Get.to(() => ErrorPage(message: "${e.toString()}"));
     }
   }

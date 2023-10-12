@@ -1,0 +1,15 @@
+import '../../../modules/{{ module }}/views/{{ module }}PageIndex.dart';
+import '../../../modules/{{ module }}/views/{{ module }}PageCreate.dart';
+import '../../../modules/{{ module }}/views/{{ module }}PageEdit.dart';
+import '../../../modules/{{ module }}/views/{{ module }}PageView.dart';
+import 'package:get/get.dart';
+
+import '../{{ module }}Module.dart';
+
+List<GetPage> blogRoutes = [
+  GetPage(name: '/{{ moduleLower }}', page: () => {{ module }}PageIndex()),
+  GetPage(name: '/{{ moduleLower }}/create', page: () => {{ module }}PageCreate()),
+  GetPage(name: '/{{ moduleLower }}/:id', page: () => {{ module }}PageView()),
+  GetPage(name: '/{{ moduleLower }}/:id/edit', page: () => {{ module }}PageEdit()),
+];
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../shared/views/components/SideMenu.dart';
 import '../../Modules.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
@@ -45,6 +46,7 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                         )),
+                    drawer: SideMenu(),
                   );
       },
     );

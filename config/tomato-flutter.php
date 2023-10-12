@@ -1,5 +1,5 @@
 <?php
 
 return [
-    //You config go here...
+    "stubs-path" => "vendor/tomatophp/tomato-flutter/stubs"
 ];

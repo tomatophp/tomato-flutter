@@ -18,30 +18,30 @@ class AuthData {
 
   /// Login Responses
   static ApiResponse get loginError => ApiResponse(
-        status: "error",
+        status: false,
         message: "Credentials do not match in our records.",
         data: null,
       );
 
   static ApiResponse get loginSuccess => ApiResponse(
-        status: "success",
+        status: true,
         message: "Logged in successfully.",
         data: {"user": _userObject.toJson(), "token": _faker.jwt.secret},
       );
 
   /// Register responses
   static ApiResponse get registerSuccess => ApiResponse(
-        status: "success",
+        status: true,
         message: "Welcome aboard! You are now registered with us.",
       );
 
   /// Get The User Data
   static ApiResponse get getUserSuccess => ApiResponse(
-        status: "success",
+        status: true,
         message: "Got the user.",
         data: _userObject.toJson(),
       );
 
   /// Logout response
-  static ApiResponse get logoutSuccess => ApiResponse(status: "success", message: "You are logged out");
+  static ApiResponse get logoutSuccess => ApiResponse(status: true, message: "You are logged out");
 }

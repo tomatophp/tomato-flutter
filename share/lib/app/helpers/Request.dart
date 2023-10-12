@@ -19,7 +19,6 @@ class Request {
     if(_clients.length > 0){
       HttpClient? _client = _clients.firstWhere((element) => element.id == client, orElse: null);
       if(_client != null){
-       Toastr.show(message: "$client is already in use please use different client name.");
        return;
       }
     }
@@ -186,6 +185,7 @@ class Request {
         return;
       case 422:
         return body;
+      case 404:
       case 500:
       default:
         return body;

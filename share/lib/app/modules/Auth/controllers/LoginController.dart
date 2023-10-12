@@ -25,14 +25,14 @@ class LoginController extends AppController {
   Future<void> submit() async {
     String _client = "loginSubmit";
     if (!formKey.currentState!.validate()) {
-      // Toastr.show(message: "Please fill all the required fields!");
+      Toastr.show(message: "Please fill all the required fields!");
       return;
     }
 
     try {
       /// Prepare form data to be sent to server
       Map<String, dynamic> body = {
-        "identifier": identifierInput.text,
+        "email": identifierInput.text,
         "password": passwordInput.text,
       };
 
@@ -42,12 +42,19 @@ class LoginController extends AppController {
       /// Call api to login user
       ApiResponse response = await _authService.login(body: body, client: _client);
       // log.w(response.data);
-      if (response.hasError()) {
+      if (response.hasError() || response.hasValidationErrors()) {
         Toastr.show(message: "${response.message}");
         return;
       }
-      await auth.setUserData(response.data['user']);
+
       await auth.setUserToken(response.data['token']);
+
+      ApiResponse userResponse = await _authService.user(_client);
+
+      await auth.setUserData(userResponse.data);
+
+      print(auth.user.toJson());
+
       Toastr.show(message: "${response.message}");
 
       /// Close the Service and request server
