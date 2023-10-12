@@ -3,6 +3,7 @@
 namespace TomatoPHP\TomatoFlutter\Services\Generator\Concerns;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 trait GenerateServices
 {
@@ -34,6 +35,7 @@ trait GenerateServices
             [
                 "module" => $this->module,
                 "table" => $this->table,
+                "route" => Str::of($this->table)->replace('_', '-')->lower(),
                 "moduleLower" => $this->moduleLower,
             ]
         );

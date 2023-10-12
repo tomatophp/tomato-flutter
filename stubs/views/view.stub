@@ -36,7 +36,7 @@ class {{ module }}PageView extends StatelessWidget {
                                       key: Key('edit'),
                                       label: 'Edit',
                                       onTap: (e){
-                                        Get.toNamed('/{{ table }}/${controller.data?.id.toString() ?? "0"}/edit');
+                                        Get.toNamed('/{{ route }}/${controller.data?.id.toString() ?? "0"}/edit');
                                       },
                                   ),
                                 ),

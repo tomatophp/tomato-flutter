@@ -165,13 +165,41 @@ trait GenerateModel
             if($key!== 0){
                 $tableFields .= "    ";
             }
-            $tableFields .= "final TextEditingController ".$item['name']."Input = TextEditingController();";
+            if($item['type'] === 'int'){
+                $tableFields .= "int? ".$this->handelName($item['name']).';';
+            }
+//            else if($item['type'] === 'relation'){
+//
+//            }
+            else if($item['type'] === 'boolean'){
+                $tableFields .= "bool? ".$this->handelName($item['name']).';';
+            }
+            else if($item['type'] === 'json' && ($item['name']== 'name' ||$item['name']== 'title'|| $item['name']== 'description')){
+                $tableFields .= "Name? ".$this->handelName($item['name']).';';
+                $this->hasJson = true;
+            }
+            else {
+                if($item['name'] === 'id'){
+                    $tableFields .= "int? ".$this->handelName($item['name']).';';
+                }
+                else {
+                    $tableFields .= "String? ".$this->handelName($item['name']).';';
+                }
+            }
 
             if($key!== count($this->cols)-1){
                 $tableFields .= PHP_EOL;
             }
         }
         return $tableFields;
+    }
+
+    private function handelName($name): string
+    {
+        if($name === 'for'){
+            $name = 'for_';
+        }
+        return $name;
     }
 
 }

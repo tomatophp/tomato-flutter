@@ -1,4 +1,4 @@
-import '../../../models/SingleModel.dart';
+import '../../../models/{{ tableUpper }}SingleModel.dart';
 import '../../../models/{{ tableUpper }}Model.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,8 @@ import '../../../models/PaginationModel.dart';
 import '../../../shared/controllers/AppController.dart';
 import '../routes/{{ module }}Routes.dart';
 import '../services/{{ module }}Service.dart';
-import '{{ module }}Controller.dart';
+import '../../../modules/{{ module }}/controllers/{{ module }}IndexController.dart';
+import '../../../modules/{{ module }}/routes/{{ module }}Routes.dart';
 
 class {{ module }}ViewController extends AppController {
 
@@ -21,7 +22,7 @@ class {{ module }}ViewController extends AppController {
   final {{ module }}Service _{{ moduleLower }}Service = {{ module }}Service.instance;
 
   /// Observables
-  final _index = SingleModel().obs;
+  final _index = {{ tableUpper }}SingleModel().obs;
 
   /// Getters
   {{ tableUpper }}Model? get data => _index.value.data ?? null;
@@ -44,7 +45,7 @@ class {{ module }}ViewController extends AppController {
 
     _{{ moduleLower }}Service.close('show');
 
-    SingleModel data = SingleModel.fromJson(response.toJson());
+    {{ tableUpper }}SingleModel data = {{ tableUpper }}SingleModel.fromJson(response.toJson());
 
     _index.value = data;
   }
@@ -56,7 +57,7 @@ class {{ module }}ViewController extends AppController {
 
     _{{ moduleLower }}Service.close('delete');
 
-    Get.delete<{{ module }}Controller>();
+    Get.delete<{{ module }}IndexController>();
 
     Get.offAllNamed({{ module }}Routes.index);
   }

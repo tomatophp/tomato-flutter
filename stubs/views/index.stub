@@ -127,12 +127,12 @@ class {{ module }}PageIndex extends StatelessWidget {
                                                       child: Column(
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
-                                                          Text('${controller.data[index]{{ titleField }}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                                          Text('${controller.data[index]['{{ titleField }}']}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                                                           RichText(
                                                               overflow: TextOverflow.ellipsis,
                                                               text: TextSpan(
                                                                   style: TextStyle(color: Colors.white60),
-                                                                  text:'${controller.data[index]{{ descriptionField }}}'
+                                                                  text:'${controller.data[index]['{{ descriptionField }}']}'
                                                               )
                                                           ),
                                                         ],
@@ -140,7 +140,7 @@ class {{ module }}PageIndex extends StatelessWidget {
                                                     ),
                                                     onTap: () {
                                                       Get.delete<{{ module }}ViewController>();
-                                                      Get.toNamed('/{{ table }}/${controller.data[index]['id']}');
+                                                      Get.toNamed('/{{ route }}/${controller.data[index]['id']}');
                                                     }
                                                 ),
 
@@ -165,7 +165,7 @@ class {{ module }}PageIndex extends StatelessWidget {
                                           key: UniqueKey(),
                                           label: "Create",
                                           onTap: (ButtonController btn) {
-                                            Get.toNamed('{{ table }}/create');
+                                            Get.toNamed('{{ route }}/create');
                                           }
                                       )
                                     ],
@@ -178,7 +178,7 @@ class {{ module }}PageIndex extends StatelessWidget {
                     drawer: SideMenu(),
                     actions: [
                       IconButton(onPressed: (){
-                        Get.toNamed('{{ table }}/create');
+                        Get.toNamed('{{ route }}/create');
                       }, icon: Icon(Icons.add))
                     ],
                   );

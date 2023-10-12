@@ -10,6 +10,9 @@ use Illuminate\Support\Str;
 use TomatoPHP\ConsoleHelpers\Traits\HandleStub;
 use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateCols;
 use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateModel;
+use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateModule;
+use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GeneratePages;
+use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateRoutes;
 use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateServices;
 use TomatoPHP\TomatoFlutter\Services\Generator\Concerns\GenerateControllers;
 
@@ -30,6 +33,9 @@ class FlutterCRUDGenerator
     use GenerateModel;
     use GenerateServices;
     use GenerateControllers;
+    use GeneratePages;
+    use GenerateRoutes;
+    use GenerateModule;
 
     private Connection $connection;
 
@@ -66,8 +72,11 @@ class FlutterCRUDGenerator
     public function generate(): void
     {
         $this->generateModel();
-        $this->generateModel();
+        $this->generateServices();
         $this->generateControllers();
+        $this->generatePages();
+        $this->generateRoutes();
+        $this->generateModule();
     }
 
 }

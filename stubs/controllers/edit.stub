@@ -1,4 +1,4 @@
-import '../../../models/SingleModel.dart';
+import '../../../models/{{ tableUpper }}SingleModel.dart';
 import '../../../models/{{ tableUpper }}Model.dart';
 import '../../../modules/{{ module }}/{{ module }}Module.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,8 @@ import '../../../models/PaginationModel.dart';
 import '../../../shared/controllers/AppController.dart';
 import '../../../shared/views/errors/ErrorPage.dart';
 import '../services/{{ module }}Service.dart';
+import '../../../modules/{{ module }}/controllers/{{ module }}IndexController.dart';
+import '../../../modules/{{ module }}/routes/{{ module }}Routes.dart';
 
 class {{ module }}EditController extends AppController {
 
@@ -23,7 +25,7 @@ class {{ module }}EditController extends AppController {
   final {{ module }}Service _{{ moduleLower }}Service = {{ module }}Service.instance;
 
   /// Observables
-  final _index = SingleModel().obs;
+  final _index = {{ tableUpper }}SingleModel().obs;
 
   /// Inputs
   GlobalKey<FormState> formKey = GlobalKey<FormState>(debugLabel: 'update{{ tableUpper }}');
@@ -47,7 +49,7 @@ class {{ module }}EditController extends AppController {
 
     _{{ moduleLower }}Service.close(_client);
 
-    SingleModel data = SingleModel.fromJson(response.toJson());
+    {{ tableUpper }}SingleModel data = {{ tableUpper }}SingleModel.fromJson(response.toJson());
     _index.value = data;
 
     {{ fieldsWithData }}
@@ -77,7 +79,7 @@ class {{ module }}EditController extends AppController {
         return;
       }
 
-      Get.delete<{{ module }}Controller>();
+      Get.delete<{{ module }}IndexController>();
 
       Toastr.show(message: "${response.message}");
 

@@ -8,13 +8,12 @@ import '../../../shared/views/components/SideMenu.dart';
 import '../../../shared/views/errors/NotConnectedErrorPage.dart';
 import '../../../shared/views/layouts/MasterLayout.dart';
 import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../controllers/{{ module }}Controller.dart';
 import '../../../../config/theme/AppTheme.dart';
 
 class {{ module }}PageCreate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<{{ module }}reateController>(
+    return GetBuilder<{{ module }}CreateController>(
       init: {{ module }}CreateController(),
       builder: ({{ module }}CreateController controller) {
         return !controller.isConnected
@@ -31,7 +30,6 @@ class {{ module }}PageCreate extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                             color: Colors.transparent,
                             width: double.infinity,
-                            height: screen.height - 55,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

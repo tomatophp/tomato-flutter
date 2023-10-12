@@ -8,10 +8,17 @@ trait GenerateControllers
 {
     private function generateControllers(): void
     {
+        $controllerPath = base_path('/flutter/' . $this->appName . '/lib/app/modules/'.$this->module.'/controllers/'.$this->module.'Controller.dart');
         $indexControllerPath = base_path('/flutter/' . $this->appName . '/lib/app/modules/'.$this->module.'/controllers/'.$this->module.'IndexController.dart');
         $createControllerPath = base_path('/flutter/' . $this->appName . '/lib/app/modules/'.$this->module.'/controllers/'.$this->module.'CreateController.dart');
         $editControllerPath = base_path('/flutter/' . $this->appName . '/lib/app/modules/'.$this->module.'/controllers/'.$this->module.'EditController.dart');
         $viewControllerPath = base_path('/flutter/' . $this->appName . '/lib/app/modules/'.$this->module.'/controllers/'.$this->module.'ViewController.dart');
+
+        //Delete Controller If Exists
+        if (File::exists($controllerPath)) {
+            File::delete($controllerPath);
+        }
+
 
         //Delete Index Controller If Exists
         if (File::exists($indexControllerPath)) {
@@ -41,7 +48,7 @@ trait GenerateControllers
                 "module" => $this->module,
                 "table" => $this->table,
                 "tableUpper" => $this->tableUpper,
-                "moduleLower" => $this->moduleLower,
+                "moduleLower" => $this->moduleLower
             ]
         );
 
@@ -58,30 +65,65 @@ trait GenerateControllers
                 "jsonFields" => $this->controllerJsonFields()
             ]
         );
+
+        // Create Edit Controller
+        $this->generateStubs(
+            $this->stubPath . "/controllers/edit.stub",
+            $editControllerPath,
+            [
+                "module" => $this->module,
+                "table" => $this->table,
+                "tableUpper" => $this->tableUpper,
+                "moduleLower" => $this->moduleLower,
+                "fields" => $this->controllerFields(),
+                "jsonFields" => $this->controllerJsonFields(),
+                "fieldsWithData" => $this->fieldsWithData()
+            ]
+        );
+
+        // Create View Controller
+        $this->generateStubs(
+            $this->stubPath . "/controllers/view.stub",
+            $viewControllerPath,
+            [
+                "module" => $this->module,
+                "table" => $this->table,
+                "tableUpper" => $this->tableUpper,
+                "moduleLower" => $this->moduleLower
+            ]
+        );
+    }
+
+    private function fieldsWithData():string
+    {
+        $fieldsWithData = "";
+        foreach($this->cols as $key=>$item){
+            if($key!== 0){
+                $fieldsWithData .= "  ";
+                if($item['type'] === 'json' && ($item['name']== 'name' ||$item['name']== 'title'|| $item['name']== 'description')){
+                    $fieldsWithData .= $item['name']."Input.text = data.data!.".$this->handelName($item['name'])."!.en!.toString();";
+                }
+                else if($item['name'] !== 'id') {
+                    $fieldsWithData .= $item['name']."Input.text = data.data!.".$this->handelName($item['name'])."!.toString();";
+                }
+            }
+
+            if($key!== count($this->cols)-1){
+                $fieldsWithData .= PHP_EOL;
+            }
+        }
+        return $fieldsWithData;
     }
 
     private function controllerFields(): string
     {
-        $controllerFields = "  ";
+        $controllerFields = "";
         foreach($this->cols as $key=>$item){
             if($key!== 0){
-                $controllerFields .= "    ";
+                $controllerFields .= "  ";
             }
-            if($item['type'] === 'int'){
-                $controllerFields .= "int? ".$this->handelName($item['name']).';';
-            }
-//            else if($item['type'] === 'relation'){
-//
-//            }
-            else if($item['type'] === 'boolean'){
-                $controllerFields .= "bool? ".$this->handelName($item['name']).';';
-            }
-            else if($item['type'] === 'json' && ($item['name']== 'name' ||$item['name']== 'title'|| $item['name']== 'description')){
-                $controllerFields .= "Name? ".$this->handelName($item['name']).';';
-                $this->hasJson = true;
-            }
-            else {
-                $controllerFields .= "String? ".$this->handelName($item['name']).';';
+            if($item['name'] !== 'id') {
+                $controllerFields .= "final TextEditingController " . $item['name'] . "Input = TextEditingController();";
             }
 
             if($key!== count($this->cols)-1){
@@ -93,6 +135,20 @@ trait GenerateControllers
 
     private function controllerJsonFields(): string
     {
+        $controllerJsonFields = "";
+        foreach($this->cols as $key=>$item){
+            if($key!== 0){
+                $controllerJsonFields .= "        ";
+            }
+            if($item['name'] !== 'id'){
+                $controllerJsonFields .= "\"".$item['name']."\": ".$item['name']."Input.text,";
+            }
 
+
+            if($key!== count($this->cols)-1){
+                $controllerJsonFields .= PHP_EOL;
+            }
+        }
+        return $controllerJsonFields;
     }
 }

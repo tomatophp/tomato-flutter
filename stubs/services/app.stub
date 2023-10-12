@@ -19,38 +19,38 @@ class App{{ module }}Service extends BaseService  implements {{ module }}Service
 
   @override
   Future<ApiResponse> search(String client, String search) async {
-    return await _request.get('/{{ table }}?search='+search, client: client, authenticate: true);
+    return await _request.get('/{{ route }}?search='+search, client: client, authenticate: true);
   }
 
   @override
   Future<ApiResponse> index(String client, String? page) async {
     var getPage = page ?? "1";
     if(int.parse(getPage) > 1){
-      return await _request.get('/{{ table }}?page='+getPage, client: client, authenticate: true);
+      return await _request.get('/{{ route }}?page='+getPage, client: client, authenticate: true);
     }
     else {
-      return await _request.get('/{{ table }}', client: client, authenticate: true);
+      return await _request.get('/{{ route }}', client: client, authenticate: true);
     }
   }
 
   @override
   Future<ApiResponse> show(String client, String id) async {
-    return await _request.get('/{{ table }}/'+id, client: client, authenticate: true);
+    return await _request.get('/{{ route }}/'+id, client: client, authenticate: true);
   }
 
   @override
   Future<ApiResponse> store(Map<String, dynamic> body, String client) async {
-    return await _request.post('/{{ table }}',body: body ,client: client, authenticate: true);
+    return await _request.post('/{{ route }}',body: body ,client: client, authenticate: true);
   }
 
   @override
   Future<ApiResponse> update(Map<String, dynamic> body, String client, String id) async {
-    return await _request.put('/{{ table }}/'+id+'/update',body: body ,client: client, authenticate: true);
+    return await _request.post('/{{ route }}/'+id,body: body ,client: client, authenticate: true);
   }
 
   @override
   Future<ApiResponse> delete(String client, String id) async {
-    return await _request.delete('/{{ table }}/'+id+'/delete',body: [], client: client, authenticate: true);
+    return await _request.delete('/{{ route }}/'+id,body: [], client: client, authenticate: true);
   }
 }
 

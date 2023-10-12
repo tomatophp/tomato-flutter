@@ -8,6 +8,8 @@ import '../../../models/PaginationModel.dart';
 import '../../../shared/controllers/AppController.dart';
 import '../../../shared/views/errors/ErrorPage.dart';
 import '../services/{{ module }}Service.dart';
+import '../../../modules/{{ module }}/controllers/{{ module }}IndexController.dart';
+import '../../../modules/{{ module }}/routes/{{ module }}Routes.dart';
 
 class {{ module }}CreateController extends AppController {
 
@@ -21,7 +23,7 @@ class {{ module }}CreateController extends AppController {
   final {{ module }}Service _{{ moduleLower }}Service = {{ module }}Service.instance;
 
   /// Inputs
-  GlobalKey<FormState> formKey = GlobalKey<FormState>(debugLabel: 'store{{ tableUpper }}');
+  GlobalKey<FormState> formKey = GlobalKey<FormState>(debugLabel: 'create{{ tableUpper }}');
   {{ fields }}
 
   @override
@@ -46,19 +48,19 @@ class {{ module }}CreateController extends AppController {
       _{{ moduleLower }}Service.init(_client);
 
       /// Call api to login user
-      ApiResponse response = await _{{ module }}Service.store(body, _client);
+      ApiResponse response = await _{{ moduleLower }}Service.store(body, _client);
 
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
         return;
       }
 
-      Get.delete<{{ module }}Controller>();
+      Get.delete<{{ module }}IndexController>();
 
       Toastr.show(message: "${response.message}");
 
       /// Close the Service and request server
-      _{{ module }}Service.close(_client);
+      _{{ moduleLower }}Service.close(_client);
 
       formKey.currentState?.reset();
 
