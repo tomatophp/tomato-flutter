@@ -74,7 +74,7 @@ class {{ module }}EditController extends AppController {
       /// Call api to login user
       ApiResponse response = await _{{ moduleLower }}Service.update(body, _client, Get.parameters['id']!);
 
-      if (response.hasError()) {
+      if (response.hasError() || response.hasValidationErrors()) {
         Toastr.show(message: "${response.message}");
         return;
       }

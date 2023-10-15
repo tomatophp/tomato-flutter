@@ -19,7 +19,7 @@ class Request {
     if(_clients.length > 0){
       HttpClient? _client = _clients.firstWhere((element) => element.id == client, orElse: null);
       if(_client != null){
-       return;
+        return;
       }
     }
 
@@ -40,7 +40,7 @@ class Request {
   Future<dynamic> get(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
     http.Response response =
-        await _httpClient.client.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    await _httpClient.client.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
@@ -62,11 +62,11 @@ class Request {
   ///====================
   Future<dynamic> multipart(String url,
       {String method = 'POST',
-      required String client,
-      required Map<String, dynamic> body,
-      Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      bool authenticate = false}) async {
+        required String client,
+        required Map<String, dynamic> body,
+        Map<String, dynamic>? params,
+        Map<String, String>? headers,
+        bool authenticate = false}) async {
     assert(body.containsKey('files'), "The body must contain [files] list");
     assert(body['files'] != null, "[files] list can not be null or empty");
     assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>, "[files] list must be [Map<String, File>] or [Map<String, List<File>>].");
@@ -171,6 +171,7 @@ class Request {
   ///======================
   static dynamic _processResponse(http.Response response) {
     ApiResponse body = ApiResponse.fromJson(jsonDecode(response.body));
+
     switch (response.statusCode) {
       case 200:
         return body;
@@ -187,6 +188,7 @@ class Request {
         return body;
       case 404:
       case 500:
+        return body;
       default:
         return body;
     }

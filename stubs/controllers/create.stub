@@ -50,7 +50,7 @@ class {{ module }}CreateController extends AppController {
       /// Call api to login user
       ApiResponse response = await _{{ moduleLower }}Service.store(body, _client);
 
-      if (response.hasError()) {
+      if (response.hasError() || response.hasValidationErrors()) {
         Toastr.show(message: "${response.message}");
         return;
       }
