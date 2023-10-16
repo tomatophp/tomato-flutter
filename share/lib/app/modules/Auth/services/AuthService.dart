@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../models/ApiResponse.dart';
+import '/app/models/ApiResponse.dart';
 import 'AppAuthService.dart';
 import 'MockAuthService.dart';
 
@@ -29,8 +29,16 @@ abstract class AuthService {
   /// Registers user
   Future<ApiResponse> register({required String client, required Map<String, dynamic> body});
 
+  Future<ApiResponse> forget({required String client, required Map<String, dynamic> body});
+
+  Future<ApiResponse> password({required String client, required Map<String, dynamic> body});
+
+  Future<ApiResponse> resend({required String client, required Map<String, dynamic> body});
+
   /// Verifies OTP
   Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body});
+
+  Future<ApiResponse> verifyOtpAndActivate({required String client, required Map<String, dynamic> body});
 
   /// Login user with Google
   Future<ApiResponse> google({required String client});

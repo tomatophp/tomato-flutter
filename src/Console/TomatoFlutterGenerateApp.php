@@ -45,35 +45,6 @@ class TomatoFlutterGenerateApp extends Command
      */
     public function handle()
     {
-        try {
-            $process = new Process([
-                'flutter',
-                'emulators'
-            ]);
-            $process->setWorkingDirectory(base_path('/flutter'));
-            $process->run();
-        }catch (\Exception $exception) {
-            error('please install flutter first, run "flutter doctor" to check if flutter installed');
-        }
-
-        try {
-            $output = Str::of(Str::of($process->getOutput())->explode("\n")[2])->explode(' • ');
-            $device = $output[0];
-
-            $process = new Process([
-                'flutter',
-                'emulators',
-                '--launch',
-                $device
-            ]);
-            $process->setWorkingDirectory(base_path('/flutter'));
-            $process->run();
-        }
-        catch (\Exception $exception){
-            error('there is no emulators on your machine, please run "flutter emulators --create" to create new one');
-        }
-
-
         $checkIfFlutterExists = File::exists(base_path('/flutter'));
         if(!$checkIfFlutterExists){
             File::makeDirectory(base_path('/flutter'));

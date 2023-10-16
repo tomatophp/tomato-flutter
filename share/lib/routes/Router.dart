@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../app/modules/Modules.dart';
+import '/app/modules/Modules.dart';
 
 List<GetPage> routes = [
   /// Basic Routes
@@ -16,5 +16,5 @@ List<GetPage> routes = [
   ...settingsRoutes,
 
   /// Profile Routes
-  ...profileRoutes,
+  ...profileRoutes
 ];

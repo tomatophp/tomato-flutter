@@ -1,6 +1,7 @@
-import '../../../shared/views/components/SideMenu.dart';
+import '/app/shared/views/components/SideMenu.dart';
 import 'package:flutter/material.dart';
-import '../../../../config/Config.dart';
+import '/config/Config.dart';
+import 'package:get/get.dart';
 
 class MasterLayout extends StatelessWidget {
   final Widget body;
@@ -20,21 +21,26 @@ class MasterLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-          elevation: 0,
-          title: title is String
-              ? Text(
-                  "${title != null ? title : Config.appName}",
-                )
-              : title,
-          actions: actions,
+    return Directionality(
+      textDirection: Get.locale.toString() == 'ar_EG' ?
+        TextDirection.rtl :
+        TextDirection.ltr,
+      child : SafeArea(
+        child: Scaffold(
+          backgroundColor: backgroundColor,
+          appBar: AppBar(
+            elevation: 0,
+            title: title is String
+                ? Text(
+                    "${title != null ? title : Config.appName}",
+                  )
+                : title,
+            actions: actions,
+          ),
+          drawer: drawer ?? null,
+          body: body,
         ),
-        drawer: drawer ?? null,
-        body: body,
-      ),
+      )
     );
   }
 }

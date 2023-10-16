@@ -1,10 +1,9 @@
-import '../../../modules/{{ module }}/views/{{ module }}PageIndex.dart';
-import '../../../modules/{{ module }}/views/{{ module }}PageCreate.dart';
-import '../../../modules/{{ module }}/views/{{ module }}PageEdit.dart';
-import '../../../modules/{{ module }}/views/{{ module }}PageView.dart';
 import 'package:get/get.dart';
 
-import '../{{ module }}Module.dart';
+import '/app/modules/{{ module }}/views/{{ module }}PageIndex.dart';
+import '/app/modules/{{ module }}/views/{{ module }}PageCreate.dart';
+import '/app/modules/{{ module }}/views/{{ module }}PageEdit.dart';
+import '/app/modules/{{ module }}/views/{{ module }}PageView.dart';
 
 List<GetPage> {{ moduleLower }}Routes = [
   GetPage(name: '/{{ route }}', page: () => {{ module }}PageIndex()),

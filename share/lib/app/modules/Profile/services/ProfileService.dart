@@ -1,4 +1,4 @@
-import '../../../models/ApiResponse.dart';
+import '/app/models/ApiResponse.dart';
 import 'package:get/get.dart';
 
 import 'AppProfileService.dart';
@@ -21,5 +21,9 @@ abstract class ProfileService {
   void close(String client);
 
   /// Do Something
-  Future<ApiResponse> getData();
+  Future<ApiResponse> getData(client);
+
+  Future<ApiResponse> update(client, body);
+
+  Future<ApiResponse> password(client, body);
 }

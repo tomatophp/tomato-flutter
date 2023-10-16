@@ -1,5 +1,5 @@
-import '../../../models/ApiResponse.dart';
-import '../../../shared/services/Services.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/services/Services.dart';
 import 'DashboardService.dart';
 
 class AppDashboardService extends BaseService implements DashboardService {

@@ -1,10 +1,11 @@
-import '../../../modules/Auth/AuthModule.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../helpers/Global.dart';
-import '../../../shared/views/layouts/AuthLayout.dart';
+import '/app/helpers/Global.dart';
+import '/app/shared/views/layouts/AuthLayout.dart';
+import '/app/modules/Auth/controllers/RegisterController.dart';
 
 class RegisterPage extends StatelessWidget {
   final RegisterController controller = Get.put(RegisterController());

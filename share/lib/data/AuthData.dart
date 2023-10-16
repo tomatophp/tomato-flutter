@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 
-import '../app/models/ApiResponse.dart';
-import '../app/models/UserModel.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/models/UserModel.dart';
 
 class AuthData {
   static Faker _faker = new Faker();

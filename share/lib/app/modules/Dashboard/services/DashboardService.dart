@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../../models/ApiResponse.dart';
-import '../../../shared/services/Services.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/services/Services.dart';
 import 'AppDashboardService.dart';
 import 'MockDashboardService.dart';
 

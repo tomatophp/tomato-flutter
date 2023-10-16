@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../helpers/Global.dart';
+import '../../Profile/routes/ProfileRoutes.dart';
+import '/app/helpers/Global.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../shared/views/errors/NotConnectedErrorPage.dart';
-import '../../../shared/views/layouts/MasterLayout.dart';
-import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../controllers/SettingsController.dart';
+import '/app/shared/views/errors/NotConnectedErrorPage.dart';
+import '/app/shared/views/layouts/MasterLayout.dart';
+import '/app/shared/views/widgets/LoadingIconWidget.dart';
+import '/app/Modules/Settings/controllers/SettingsController.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -109,6 +110,103 @@ class SettingsPage extends StatelessWidget {
                             Text(
                               "Account",
                               style: TextStyl.bodySm(context),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: (){
+                                Get.toNamed(ProfileRoutes.profile);
+                              },
+                              child: Container(
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                child: Text("Update Profile", style: TextStyl.button(context),),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: (){
+                                Get.toNamed(ProfileRoutes.password);
+                              },
+                              child: Container(
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                child: Text("Change Password", style: TextStyl.button(context),),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: (){
+                                Get.toNamed(ProfileRoutes.lang);
+                              },
+                              child: Container(
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                child: Text("Change Language", style: TextStyl.button(context),),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: (){
+                                Get.dialog(Dialog(
+                                  child: Container(
+                                    padding: EdgeInsets.all(20),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.all(30),
+                                          child: Text("Are you sure you want to close your account?",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold
+                                              )
+                                          ),
+                                        ),
+                                        ButtonBar(
+                                          children: [
+                                            Button(
+                                                key: Key('cancel'),
+                                                label: 'Cancel',
+                                                onTap: (e){
+                                                  Get.back();
+                                                }
+                                            ),
+                                            Button(
+                                                key: Key('close'),
+                                                label: 'Close',
+                                                onTap: (e) async {
+                                                  await controller.closeAccount();
+                                                }
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ));
+                              },
+                              child: Container(
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                child: Text("Close Account", style: TextStyl.button(context),),
+                              ),
                             ),
                             const SizedBox(height: 4),
                             InkWell(

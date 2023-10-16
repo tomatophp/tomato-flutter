@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../shared/controllers/AppController.dart';
+import '/app/shared/controllers/AppController.dart';
 
 class HomeControllerController extends AppController {
   /// Create and get the instance of the controller
@@ -8,7 +8,7 @@ class HomeControllerController extends AppController {
     if (!Get.isRegistered<HomeControllerController>()) Get.put(HomeControllerController());
     return Get.find<HomeControllerController>();
   }
-  
+
   /// Observables
   var _exampleBool = false.obs;
 
@@ -20,7 +20,7 @@ class HomeControllerController extends AppController {
     super.onInit();
     /// Do something here
   }
-  
+
   void exampleMethod() {
     // TODO: implement exampleMethod
     throw UnimplementedError();

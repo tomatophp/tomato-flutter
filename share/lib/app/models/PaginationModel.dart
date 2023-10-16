@@ -1,5 +1,5 @@
 class PaginationModel {
-  String? success;
+  bool? success;
   String? message;
   Null? errors;
   Data? data;

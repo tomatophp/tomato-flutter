@@ -1,14 +1,11 @@
-import '../../../modules/{{ module }}/controllers/{{ module }}EditController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../helpers/Global.dart';
-import '../../../shared/views/components/SideMenu.dart';
-import '../../../shared/views/errors/NotConnectedErrorPage.dart';
-import '../../../shared/views/layouts/MasterLayout.dart';
-import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../../../../config/theme/AppTheme.dart';
+import '/app/modules/{{ module }}/controllers/{{ module }}EditController.dart';
+import '/app/shared/views/errors/NotConnectedErrorPage.dart';
+import '/app/shared/views/layouts/MasterLayout.dart';
+import '/app/shared/views/widgets/LoadingIconWidget.dart';
 
 class {{ module }}PageEdit extends StatelessWidget {
   @override

@@ -1,9 +1,9 @@
-import '../../../models/ApiResponse.dart';
+import '/app/models/ApiResponse.dart';
 import 'package:get/get.dart';
 
 import 'AppAuthStateService.dart';
 import 'MockAuthStateService.dart';
-import '../Services.dart';
+import '/app/shared/services/Services.dart';
 
 abstract class AuthStateService extends BaseService {
   /// Configure if Mock is enabled or not

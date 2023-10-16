@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../../routes/Routes.dart';
-import '../../../helpers/Global.dart';
-import '../../../models/ApiResponse.dart';
-import '../../../shared/controllers/AppController.dart';
-import '../../../shared/views/errors/ErrorPage.dart';
-import '../../Modules.dart';
+import '/app/helpers/Global.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/controllers/AppController.dart';
+import '/app/shared/views/errors/ErrorPage.dart';
+import '/app/modules/Dashboard/routes/DashboardRoutes.dart';
+import '/app/modules/Auth/services/AuthService.dart';
 
 class LoginController extends AppController {
   static LoginController get instance {
@@ -21,6 +21,8 @@ class LoginController extends AppController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController identifierInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
+
+
 
   Future<void> submit() async {
     String _client = "loginSubmit";
@@ -41,27 +43,33 @@ class LoginController extends AppController {
 
       /// Call api to login user
       ApiResponse response = await _authService.login(body: body, client: _client);
+
       // log.w(response.data);
       if (response.hasError() || response.hasValidationErrors()) {
-        Toastr.show(message: "${response.message}");
+        Toastr.error(message: "${response.message}");
         return;
       }
 
-      await auth.setUserToken(response.data['token']);
+      if(response.status == true){
+        await auth.setUserToken(response.data['token']);
 
-      ApiResponse userResponse = await _authService.user(_client);
+        ApiResponse userResponse = await _authService.user(_client);
 
-      await auth.setUserData(userResponse.data);
+        await auth.setUserData(userResponse.data);
 
-      print(auth.user.toJson());
+        Toastr.show(message: "${response.message}");
 
-      Toastr.show(message: "${response.message}");
+        /// Redirect user
+        Get.offAllNamed(DashboardRoutes.dashboard);
+      }
+      else {
+        Toastr.error(message: "${response.message}");
+        return;
+      }
 
       /// Close the Service and request server
       _authService.close(_client);
 
-      /// Redirect user
-      Get.offAllNamed(DashboardRoutes.dashboard);
     } on Exception catch (e) {
       Get.to(() => ErrorPage(message: "${e.toString()}"));
     }

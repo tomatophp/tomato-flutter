@@ -28,6 +28,8 @@ dependencies:
   # Enable firebase essential services
   fire_connect:
     path: packages/fire_connect
+  flutter_localization: ^0.1.14
+  translations_loader: ^1.0.2
 
 #  flutter_local_notifications:
 
@@ -58,3 +60,4 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lang/

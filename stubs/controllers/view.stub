@@ -1,14 +1,14 @@
-import '../../../models/{{ tableUpper }}SingleModel.dart';
-import '../../../models/{{ tableUpper }}Model.dart';
+import '/app/models/{{ tableUpper }}SingleModel.dart';
+import '/app/models/{{ tableUpper }}Model.dart';
 import 'package:get/get.dart';
 
-import '../../../models/ApiResponse.dart';
-import '../../../models/PaginationModel.dart';
-import '../../../shared/controllers/AppController.dart';
-import '../routes/{{ module }}Routes.dart';
-import '../services/{{ module }}Service.dart';
-import '../../../modules/{{ module }}/controllers/{{ module }}IndexController.dart';
-import '../../../modules/{{ module }}/routes/{{ module }}Routes.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/models/PaginationModel.dart';
+import '/app/shared/controllers/AppController.dart';
+import '/app/modules/{{ module }}/routes/{{ module }}Routes.dart';
+import '/app/modules/{{ module }}/services/{{ module }}Service.dart';
+import '/app/modules/{{ module }}/controllers/{{ module }}IndexController.dart';
+import '/app/modules/{{ module }}/routes/{{ module }}Routes.dart';
 
 class {{ module }}ViewController extends AppController {
 

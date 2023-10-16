@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../helpers/Global.dart';
-import '../controllers/SplashController.dart';
+import '/app/helpers/Global.dart';
+import '/app/modules/Splash/controllers/SplashController.dart';
 
 class SplashPage extends StatelessWidget {
   SplashPage({Key? key}) : super(key: key);

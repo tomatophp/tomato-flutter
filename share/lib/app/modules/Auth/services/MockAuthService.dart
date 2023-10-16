@@ -1,9 +1,9 @@
-import '../../../models/UserModel.dart';
+import '/app/models/UserModel.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/AuthData.dart';
-import '../../../../data/UsersData.dart';
-import '../../../models/ApiResponse.dart';
+import '/data/AuthData.dart';
+import '/data/UsersData.dart';
+import '/app/models/ApiResponse.dart';
 import 'AuthService.dart';
 
 class MockAuthService implements AuthService {
@@ -33,6 +33,26 @@ class MockAuthService implements AuthService {
 
       return AuthData.loginSuccess;
     });
+  }
+
+  @override
+  Future<ApiResponse> forget({required String client, required Map<String, dynamic> body}) async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> verifyOtpAndActivate({required String client, required Map<String, dynamic> body}) async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> password({required String client, required Map<String, dynamic> body}) async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> resend({required String client, required Map<String, dynamic> body}) async {
+    throw UnimplementedError();
   }
 
   @override

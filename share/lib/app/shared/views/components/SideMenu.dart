@@ -1,9 +1,9 @@
-import '../../../helpers/Global.dart';
-import '../../../modules/Dashboard/DashboardModule.dart';
+import '/app/helpers/Global.dart';
+import '/app/modules/Dashboard/DashboardModule.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../modules/Dashboard/routes/DashboardRoutes.dart';
+import '/app/modules/Dashboard/routes/DashboardRoutes.dart';
 
 class SideMenu extends StatelessWidget {
 
@@ -36,7 +36,7 @@ class SideMenu extends StatelessWidget {
               Get.toNamed(DashboardRoutes.dashboard);
               // Navigator.pop(context);
             },
-          ),
+          )
         ],
       ),
     );

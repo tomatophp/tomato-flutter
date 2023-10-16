@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../models/ApiResponse.dart';
-import '../../../models/PaginationModel.dart';
-import '../../../shared/controllers/AppController.dart';
-import '../services/{{ module }}Service.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/models/PaginationModel.dart';
+import '/app/shared/controllers/AppController.dart';
+import '/app/modules/{{ module }}/services/{{ module }}Service.dart';
 
 class {{ module }}IndexController extends AppController {
   /// Create and get the instance of the controller

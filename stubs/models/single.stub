@@ -1,9 +1,7 @@
-import 'dart:convert';
-
-import '../../../app/models/{{ tableUpper }}Model.dart';
+import '/app/models/{{ tableUpper }}Model.dart';
 
 class {{ tableUpper }}SingleModel {
-  String? success;
+  bool? success;
   String? message;
   Null? errors;
   {{ tableUpper }}Model? data;

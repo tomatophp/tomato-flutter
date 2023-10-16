@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../helpers/Global.dart';
+import '/app/helpers/Global.dart';
 
 class NotConnectedErrorPage extends StatelessWidget {
   NotConnectedErrorPage(

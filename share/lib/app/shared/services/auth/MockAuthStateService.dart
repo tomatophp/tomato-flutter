@@ -1,8 +1,8 @@
 import 'package:get/get_utils/get_utils.dart';
 
-import '../../../../data/AuthData.dart';
-import '../../../models/ApiResponse.dart';
-import '../Services.dart';
+import '/data/AuthData.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/services/Services.dart';
 
 class MockAuthStateService extends BaseService implements AuthStateService {
   @override

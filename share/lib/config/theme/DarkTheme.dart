@@ -1,8 +1,8 @@
 import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
-import '../../app/helpers/Global.dart';
+import '/app/helpers/Global.dart';
 
-import '../Config.dart';
+import '/config/Config.dart';
 
 ///======================================
 /// Dark Input Border

@@ -1,5 +1,5 @@
-import '../../../models/ApiResponse.dart';
-import '../../../helpers/Request.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/helpers/Request.dart';
 import 'ProfileService.dart';
 
 class AppProfileService implements ProfileService {
@@ -17,7 +17,17 @@ class AppProfileService implements ProfileService {
   void close(String client) => _request.close(client);
 
   @override
-  Future<ApiResponse> getData() async {
-    throw UnimplementedError('Add this method');
+  Future<ApiResponse> getData(client) async {
+    return await _request.get('/profile', client: client, authenticate: true);
+  }
+
+  @override
+  Future<ApiResponse> update(client, body) async {
+    return await _request.post('/profile', body: body, client: client, authenticate: true);
+  }
+
+  @override
+  Future<ApiResponse> password(client, body) async {
+    return await _request.post('/profile/password', body: body, client: client, authenticate: true);
   }
 }

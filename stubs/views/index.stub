@@ -1,18 +1,15 @@
 import 'dart:ui';
-
-import '../../../modules/{{ module }}/{{ module }}Module.dart';
-import '../../../modules/{{ module }}/controllers/{{ module }}ViewController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../helpers/Global.dart';
-import '../../../shared/views/components/SideMenu.dart';
-import '../../../shared/views/errors/NotConnectedErrorPage.dart';
-import '../../../shared/views/layouts/MasterLayout.dart';
-import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../controllers/{{ module }}IndexController.dart';
-import '../../../../config/theme/AppTheme.dart';
+import '/config/theme/AppTheme.dart';
+import '/app/shared/views/components/SideMenu.dart';
+import '/app/helpers/Global.dart';
+import '/app/shared/views/errors/NotConnectedErrorPage.dart';
+import '/app/shared/views/layouts/MasterLayout.dart';
+import '/app/shared/views/widgets/LoadingIconWidget.dart';
+import '/app/modules/{{ module }}/{{ module }}Module.dart';
 
 class {{ module }}PageIndex extends StatelessWidget {
   @override

@@ -18,18 +18,18 @@ class ApiResponse {
   dynamic data;
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
-    status: json["exception"] == null ? json["success"] : false,
-    message: json["message"] == null ? null : json["message"],
-    validationError: json["errors"] == null ? null : json['errors'][json["errors"].keys.first].first,
-    data: json["data"] == null ? null : json["data"],
-  );
+        status: json["exception"] == null ? json["status"] : false,
+        message: json["message"] == null ? null : json["message"],
+        validationError: json["errors"] == null ? null : json['errors'][json["errors"].keys.first].first,
+        data: json["data"] == null ? null : json["data"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "success": status,
-    "message": message == null ? null : message,
-    "errors": validationError == null ? null : validationError,
-    "data": data == null ? null : data,
-  };
+        "success": status,
+        "message": message == null ? null : message,
+        "errors": validationError == null ? null : validationError,
+        "data": data == null ? null : data,
+      };
 
   ApiResponse copyWith({bool? status, String? message, dynamic validationError, dynamic data}) {
     return ApiResponse(

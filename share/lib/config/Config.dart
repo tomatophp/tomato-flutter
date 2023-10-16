@@ -1,13 +1,17 @@
 import 'package:google_fonts/google_fonts.dart';
 
-import '../app/modules/Modules.dart';
-import '../routes/Routes.dart';
+import '/app/modules/Modules.dart';
 
 class Config {
   ///======================================
   /// Is Auth Required In App
   ///======================================
   static bool authRequired = true;
+
+  ///======================================
+  /// Is Auth Required OTP
+  ///======================================
+  static bool requiredOTP = true;
 
   ///======================================
   /// Debug Mode
@@ -22,7 +26,7 @@ class Config {
   ///======================================
   /// App Name
   ///======================================
-  static String appName = "Flutter Fusion";
+  static String appName = "Tomato";
 
   ///======================================
   /// Home/Dashboard URL [To be used to redirect user after login]

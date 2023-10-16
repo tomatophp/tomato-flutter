@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../shared/views/components/SideMenu.dart';
-import '../../Modules.dart';
+import '/app/shared/views/components/SideMenu.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../shared/views/errors/NotConnectedErrorPage.dart';
-import '../../../shared/views/layouts/MasterLayout.dart';
-import '../../../shared/views/widgets/Widgets.dart';
+import '/app/shared/views/errors/NotConnectedErrorPage.dart';
+import '/app/shared/views/layouts/MasterLayout.dart';
+import '/app/shared/views/widgets/Widgets.dart';
+import '/app/modules/Settings/routes/SettingsRoutes.dart';
+import '/app/modules/Dashboard/controllers/DashboardController.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -37,7 +38,7 @@ class DashboardPage extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  'I am a dashboard',
+                                  'hello'.tr,
                                   style: TextStyl.subtitle(context),
                                 ),
                                 SizedBox(height: spacer),

@@ -1,5 +1,5 @@
-import '../../../helpers/Request.dart';
-import '../../../models/ApiResponse.dart';
+import '/app/helpers/Request.dart';
+import '/app/models/ApiResponse.dart';
 import 'AuthService.dart';
 
 class AppAuthService implements AuthService {
@@ -50,8 +50,27 @@ class AppAuthService implements AuthService {
   }
 
   @override
-  Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body}) {
-    // TODO: implement verifyOtp
-    throw UnimplementedError();
+  Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/otp-check', client: client, body: body);
+  }
+
+  @override
+  Future<ApiResponse> verifyOtpAndActivate({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/otp', client: client, body: body);
+  }
+
+  @override
+  Future<ApiResponse> forget({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/reset', client: client, body: body);
+  }
+
+  @override
+  Future<ApiResponse> password({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/password', client: client, body: body);
+  }
+
+  @override
+  Future<ApiResponse> resend({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/resend', client: client, body: body);
   }
 }

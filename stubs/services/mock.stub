@@ -1,5 +1,5 @@
-import '../../../models/ApiResponse.dart';
-import '../../../shared/services/Services.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/services/Services.dart';
 import '{{ module }}Service.dart';
 
 class Mock{{ module }}Service extends BaseService implements {{ module }}Service {

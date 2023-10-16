@@ -1,8 +1,8 @@
-import '../../../models/ApiResponse.dart';
+import '/app/models/ApiResponse.dart';
 
-import '../../../helpers/Global.dart';
-import '../../../helpers/Request.dart';
-import '../Services.dart';
+import '/app/helpers/Global.dart';
+import '/app/helpers/Request.dart';
+import '/app/shared/services/Services.dart';
 
 class AppAuthStateService extends BaseService implements AuthStateService {
   late Request _request;

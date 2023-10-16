@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../helpers/Global.dart';
+import '/app/helpers/Global.dart';
 
 class ErrorPage extends StatelessWidget {
   ErrorPage(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../helpers/Global.dart';
+import '/app/helpers/Global.dart';
 import 'package:ui_x/ui_x.dart';
 
 class LoadingIconWidget extends StatelessWidget {

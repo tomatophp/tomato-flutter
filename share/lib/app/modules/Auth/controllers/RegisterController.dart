@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import '../../../models/UserModel.dart';
+import '/config/Config.dart';
+import '/app/helpers/Global.dart';
+import '/app/models/UserModel.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../models/ApiResponse.dart';
-import '../../../shared/controllers/AppController.dart';
-import '../../../shared/views/errors/ErrorPage.dart';
-import '../../Modules.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/shared/controllers/AppController.dart';
+import '/app/shared/views/errors/ErrorPage.dart';
+import '/app/modules/Auth/routes/AuthRoutes.dart';
+import '/app/modules/Auth/services/AuthService.dart';
+import 'LoginController.dart';
 
 class RegisterController extends AppController {
   static RegisterController get instance {
@@ -72,7 +76,16 @@ class RegisterController extends AppController {
 
       setBusy(false);
       /// Login the user after registration
-      Get.offAllNamed(AuthRoutes.login);
+
+      if(Config.requiredOTP){
+        storage.write("email", emailInput.text);
+        storage.write("activated", true);
+        Get.offAllNamed(AuthRoutes.otp);
+      }
+      else {
+        Get.offAllNamed(AuthRoutes.login);
+      }
+
     } on Exception catch (e) {
       setBusy(false);
       Get.to(() => ErrorPage(message: "${e.toString()}"));

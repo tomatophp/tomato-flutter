@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AuthLayout extends StatelessWidget {
   final Widget body;
@@ -9,9 +10,14 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: body,
+    return Directionality(
+        textDirection: Get.locale.toString() == 'ar_EG' ?
+          TextDirection.rtl :
+          TextDirection.ltr,
+        child: Scaffold(
+          backgroundColor: backgroundColor,
+          body: body,
+        )
     );
   }
 }

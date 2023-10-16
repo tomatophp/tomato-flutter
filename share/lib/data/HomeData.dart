@@ -1,4 +1,4 @@
-import '../app/models/ApiResponse.dart';
+import '/app/models/ApiResponse.dart';
 
 class HomeData {
   /// Login Responses

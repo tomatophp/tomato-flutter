@@ -1,9 +1,9 @@
-import '../../../models/ApiResponse.dart';
-import '../../../modules/Modules.dart';
+import '/app/models/ApiResponse.dart';
+import '/app/modules/Modules.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/controllers/AppController.dart';
-import '../../../shared/views/errors/Errors.dart';
+import '/app/shared/controllers/AppController.dart';
+import '/app/shared/views/errors/Errors.dart';
 
 class DashboardController extends AppController {
   static DashboardController get instance {

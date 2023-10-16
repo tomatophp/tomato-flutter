@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../helpers/Global.dart';
+import '/app/helpers/Global.dart';
 
 class NotFoundErrorPage extends StatelessWidget {
   NotFoundErrorPage(

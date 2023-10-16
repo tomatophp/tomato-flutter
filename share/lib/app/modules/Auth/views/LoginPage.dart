@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../helpers/Global.dart';
-import '../../../shared/views/layouts/AuthLayout.dart';
-import '../controllers/LoginController.dart';
+import '/app/helpers/Global.dart';
+import '/app/shared/views/layouts/AuthLayout.dart';
+import '/app/modules/Auth/controllers/LoginController.dart';
 
 class LoginPage extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
@@ -40,9 +40,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: spacer),
-                      Text("Welcome Back,", style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
+                      Text("welcomeBack".tr, style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
                       const SizedBox(height: spacer1),
-                      Text("Sign in to continue", style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
+                      Text("SignInToContinue".tr, style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Form(
@@ -50,16 +50,33 @@ class LoginPage extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                       children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Get.locale.toString() == 'en_US' ? Button.primary(
+                            label: 'ع',
+                            key: Key('lang'),
+                            onTap: (ButtonController btn) {
+                              Get.updateLocale(Locale('ar_EG'));
+                            },
+                          ): Button.primary(
+                            label: 'En',
+                            key: Key('lang'),
+                            onTap: (ButtonController btn) {
+                              Get.updateLocale(Locale('en_US'));
+                            },
+                          ),
+                        ),
+                        SizedBox(height: 25),
                         FormInput.text(
                           controller: controller.identifierInput,
-                          placeholder: "Username / Email / Phone",
+                          placeholder: "email".tr,
                           leading: Icon(FeatherIcons.user),
                           validator: (value) => Validator("Identifier", value!).required().validate(),
                         ),
                         SizedBox(height: 25),
                         FormInput.password(
                           controller: controller.passwordInput,
-                          placeholder: "Password",
+                          placeholder: "password".tr,
                           leading: Icon(Icons.lock_outline),
                           validator: (value) => Validator("password", value!).required().validate(),
                           action: TextInputAction.done,
@@ -67,7 +84,7 @@ class LoginPage extends StatelessWidget {
                         SizedBox(height: 25),
                         Button.block(
                           key: UniqueKey(),
-                          label: "Login",
+                          label: "login".tr,
                           onTap: (ButtonController btn) async {
                             btn.setBusy(true).setDisabled(true);
                             await controller.submit();
@@ -79,11 +96,27 @@ class LoginPage extends StatelessWidget {
                           onTap: () => Get.offNamed("/register"),
                           child: Text.rich(
                             TextSpan(
-                              text: "Don't have an account?",
+                              text: "register".tr,
                               style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
                               children: [
                                 TextSpan(
-                                  text: " Join Now",
+                                  text: "join".tr,
+                                  style: TextStyl.button(context)?.copyWith(color: Theme.of(context).primaryColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () => Get.offNamed("/reset"),
+                          child: Text.rich(
+                            TextSpan(
+                              text: "forgetPassword".tr,
+                              style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
+                              children: [
+                                TextSpan(
+                                  text: "reset".tr,
                                   style: TextStyl.button(context)?.copyWith(color: Theme.of(context).primaryColor),
                                 ),
                               ],
