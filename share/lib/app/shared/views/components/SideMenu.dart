@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '/app/modules/Dashboard/routes/DashboardRoutes.dart';
+import '/config/theme/AppTheme.dart';
 
 class SideMenu extends StatelessWidget {
 
@@ -15,7 +16,7 @@ class SideMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader( // <-- SEE HERE
-            decoration: BoxDecoration(color: const Color(0xff764abc)),
+            decoration: BoxDecoration(color: AppTheme.lightTheme.primaryColor),
             accountName: Text(
               auth.user.name ?? '',
               style: TextStyle(

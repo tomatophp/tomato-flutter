@@ -9,7 +9,8 @@ import '/app/helpers/Global.dart';
 import '/app/shared/views/errors/NotConnectedErrorPage.dart';
 import '/app/shared/views/layouts/MasterLayout.dart';
 import '/app/shared/views/widgets/LoadingIconWidget.dart';
-import '/app/modules/{{ module }}/{{ module }}Module.dart';
+import '/app/modules/{{ module }}/controllers/{{ module }}ViewController.dart';
+import '/app/modules/{{ module }}/controllers/{{ module }}IndexController.dart';
 
 class {{ module }}PageIndex extends StatelessWidget {
   @override
@@ -116,7 +117,13 @@ class {{ module }}PageIndex extends StatelessWidget {
                                               return Container(
                                                 height: 100,
                                                 margin: EdgeInsets.only(top: 20),
-                                                color: AppTheme.darkTheme.primaryColorDark,
+                                                decoration: BoxDecoration(
+                                                  color: currentTheme() == ThemeMode.dark ? AppTheme.darkTheme.primaryColorDark : Colors.white70,
+                                                  border: Border.all(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  borderRadius: BorderRadius.all(Radius.circular(5))
+                                                ),
                                                 padding: EdgeInsets.all(10),
                                                 child: GestureDetector(
                                                     child: Container(
@@ -124,11 +131,11 @@ class {{ module }}PageIndex extends StatelessWidget {
                                                       child: Column(
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
-                                                          Text('${controller.data[index]['{{ titleField }}']}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                                          Text('${controller.data[index]['{{ titleField }}']}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: currentTheme() == ThemeMode.dark ? Colors.white : Colors.black)),
                                                           RichText(
                                                               overflow: TextOverflow.ellipsis,
                                                               text: TextSpan(
-                                                                  style: TextStyle(color: Colors.white60),
+                                                                  style: TextStyle(color: currentTheme() == ThemeMode.dark ? Colors.white60 : Colors.black54),
                                                                   text:'${controller.data[index]['{{ descriptionField }}']}'
                                                               )
                                                           ),

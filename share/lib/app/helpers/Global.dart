@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
 
+import '/app/shared/views/widgets/ThemeBuilder.dart';
 import '/app/shared/controllers/AuthState.dart';
 
 ///======================================
@@ -35,6 +36,14 @@ String image(name) {
 ///======================================
 String assetIcon(name) {
   return "assets/icons/$name";
+}
+
+///======================================
+/// Current Theme
+///======================================
+ThemeMode? currentTheme(){
+  var context = Get.context;
+  return ThemeBuilder.of(context!)?.getCurrentTheme();
 }
 
 ///======================================
