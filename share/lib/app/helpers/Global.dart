@@ -32,6 +32,13 @@ String image(name) {
 }
 
 ///======================================
+/// String UCFirst Helper
+///======================================
+String capitalize(String text) {
+  return "${text[0].toUpperCase()}${text.substring(1).toLowerCase()}";
+}
+
+///======================================
 /// Icon Helper
 ///======================================
 String assetIcon(name) {
@@ -91,8 +98,8 @@ int _shadeValue(int value, double factor) =>
     max(0, min(value - (value * factor).round(), 255));
 
 Color _shadeColor(Color color, double factor) => Color.fromRGBO(
-      _shadeValue(color.red, factor),
-      _shadeValue(color.green, factor),
-      _shadeValue(color.blue, factor),
-      1,
-    );
+  _shadeValue(color.red, factor),
+  _shadeValue(color.green, factor),
+  _shadeValue(color.blue, factor),
+  1,
+);
