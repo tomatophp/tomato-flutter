@@ -18,5 +18,9 @@ List<GetPage> routes = [
   /// Profile Routes
   ...profileRoutes,
 
-  ...formsRoutes
+  ...formsRoutes,
+
+  ...locationRoutes,
+
+  ...notificationsRoutes
 ];

@@ -4,7 +4,7 @@ import 'DashboardService.dart';
 
 class MockDashboardService extends BaseService implements DashboardService {
   @override
-  Future<ApiResponse> doSomething({required String client}) async {
+  Future<ApiResponse> updateNotificationToken(String client, String token, String type) async {
     // TODO: implement googleLogin
     throw UnimplementedError();
   }

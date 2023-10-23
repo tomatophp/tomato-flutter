@@ -325,6 +325,12 @@ class FormsController extends AppController {
         }
       }
       setBusy(false);
+
+
+      String? redirect  = storage.read('form-redirect');
+      if(redirect != null){
+        Get.toNamed(redirect);
+      }
     }
     else {
       setBusy(false);

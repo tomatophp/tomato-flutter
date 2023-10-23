@@ -1,9 +1,12 @@
+import 'package:tomato/app/helpers/Global.dart';
+
+import '/config/Config.dart';
+
 import '/app/models/ApiResponse.dart';
 import '/app/modules/Modules.dart';
 import 'package:get/get.dart';
 
 import '/app/shared/controllers/AppController.dart';
-import '/app/shared/views/errors/Errors.dart';
 
 class DashboardController extends AppController {
   static DashboardController get instance {
@@ -16,17 +19,29 @@ class DashboardController extends AppController {
   @override
   void onInit() {
     super.onInit();
+
+    if(Config.fireConnectActive) {
+      getData();
+    }
   }
 
   Future<void> getData() async {
-    try{
-      String _client = 'dashboard-get-data';
-      _dashboardService.init(_client);
-      ApiResponse response = await _dashboardService.doSomething(client: _client);
-    } on Exception catch(e){
-        Get.to(() => ErrorPage(message: "$e"));
-    } on Error catch(e){
-        Get.to(() => ErrorPage(message: "$e"));
+    String _client = 'dashboard-get-data';
+    _dashboardService.init(_client);
+    String token;
+    String type;
+    if(storage.read('fcm-web') != null){
+      token = storage.read('fcm-web');
+      type = 'fcm-web';
     }
+    else {
+      token = storage.read('fcm-api');
+      type = 'fcm-api';
+    }
+    print(type);
+    ApiResponse response = await _dashboardService.updateNotificationToken(_client, token, type);
+    print(response.data);
+
+    _dashboardService.close(_client);
   }
 }

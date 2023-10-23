@@ -14,6 +14,11 @@ class Config {
   static bool requiredOTP = true;
 
   ///======================================
+  /// Is Fire Connect Active
+  ///======================================
+  static bool fireConnectActive = true;
+
+  ///======================================
   /// Debug Mode
   ///======================================
   static bool inDebug = true;
@@ -21,7 +26,7 @@ class Config {
   ///======================================
   /// API base url
   ///======================================
-  static String apiBaseUrl = "https://tomato.test/api";
+  static String apiBaseUrl = "https://6vdrm2alho.sharedwithexpose.com/api";
 
   ///======================================
   /// App Name

@@ -22,6 +22,9 @@ class NotificationService {
   }
 
   void show(int id, {required String title, required String body, String? payload}) {
+    print(id);
+    print(title);
+    print(body);
     _flutterLocalNotificationsPlugin.show(
       id,
       title,

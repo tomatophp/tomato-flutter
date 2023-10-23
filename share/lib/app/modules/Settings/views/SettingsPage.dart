@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../Profile/routes/ProfileRoutes.dart';
-import '/app/helpers/Global.dart';
 import 'package:get/get.dart';
+import 'package:tomato/app/modules/Modules.dart';
 import 'package:ui_x/ui_x.dart';
 
+import '/app/helpers/Global.dart';
 import '/app/shared/views/errors/NotConnectedErrorPage.dart';
 import '/app/shared/views/layouts/MasterLayout.dart';
 import '/app/shared/views/widgets/LoadingIconWidget.dart';
-import '/app/Modules/Settings/controllers/SettingsController.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -36,17 +35,27 @@ class SettingsPage extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     splashFactory: NoSplash.splashFactory,
-                                    onTap: () => controller.changeTheme(context, "system"),
+                                    onTap: () => controller.changeTheme(
+                                        context, "system"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.background,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .background,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(color: controller.selectedTheme == 'system' ? kcPrimary : Colors.transparent, width: 2),
+                                        border: Border.all(
+                                            color: controller.selectedTheme ==
+                                                    'system'
+                                                ? kcPrimary
+                                                : Colors.transparent,
+                                            width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_4_rounded, size: 32),
+                                          Icon(Icons.brightness_4_rounded,
+                                              size: 32),
                                           Text(
                                             'System',
                                             style: TextStyl.bodySm(context),
@@ -60,17 +69,27 @@ class SettingsPage extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     splashFactory: NoSplash.splashFactory,
-                                    onTap: () => controller.changeTheme(context, "light"),
+                                    onTap: () => controller.changeTheme(
+                                        context, "light"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.background,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .background,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(color: controller.selectedTheme == 'light' ? kcPrimary : Colors.transparent, width: 2),
+                                        border: Border.all(
+                                            color: controller.selectedTheme ==
+                                                    'light'
+                                                ? kcPrimary
+                                                : Colors.transparent,
+                                            width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_5_rounded, size: 32),
+                                          Icon(Icons.brightness_5_rounded,
+                                              size: 32),
                                           Text(
                                             'Light',
                                             style: TextStyl.bodySm(context),
@@ -84,17 +103,27 @@ class SettingsPage extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     splashFactory: NoSplash.splashFactory,
-                                    onTap: () => controller.changeTheme(context, "dark"),
+                                    onTap: () =>
+                                        controller.changeTheme(context, "dark"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.background,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .background,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(color: controller.selectedTheme == 'dark' ? kcPrimary : Colors.transparent, width: 2),
+                                        border: Border.all(
+                                            color: controller.selectedTheme ==
+                                                    'dark'
+                                                ? kcPrimary
+                                                : Colors.transparent,
+                                            width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_2_rounded, size: 32),
+                                          Icon(Icons.brightness_2_rounded,
+                                              size: 32),
                                           Text(
                                             'Dark',
                                             style: TextStyl.bodySm(context),
@@ -113,84 +142,119 @@ class SettingsPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Get.toNamed(ProfileRoutes.profile);
                               },
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                child: Text("Update Profile", style: TextStyl.button(context),),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Update Profile",
+                                  style: TextStyl.button(context),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 4),
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Get.toNamed(ProfileRoutes.password);
                               },
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                child: Text("Change Password", style: TextStyl.button(context),),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Change Password",
+                                  style: TextStyl.button(context),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 4),
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Get.toNamed(ProfileRoutes.lang);
                               },
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                child: Text("Change Language", style: TextStyl.button(context),),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Change Language",
+                                  style: TextStyl.button(context),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 4),
                             InkWell(
-                              onTap: (){
+                              onTap: () {
+                                Get.delete<NotificationsIndexController>();
+                                Get.toNamed(NotificationsRoutes.index);
+                              },
+                              child: Container(
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Notifications",
+                                  style: TextStyl.button(context),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: () {
                                 Get.dialog(Dialog(
                                   child: Container(
                                     padding: EdgeInsets.all(20),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Container(
                                           padding: EdgeInsets.all(30),
-                                          child: Text("Are you sure you want to close your account?",
+                                          child: Text(
+                                              "Are you sure you want to close your account?",
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  fontWeight: FontWeight.bold
-                                              )
-                                          ),
+                                                  fontWeight: FontWeight.bold)),
                                         ),
                                         ButtonBar(
                                           children: [
                                             Button(
                                                 key: Key('cancel'),
                                                 label: 'Cancel',
-                                                onTap: (e){
+                                                onTap: (e) {
                                                   Get.back();
-                                                }
-                                            ),
+                                                }),
                                             Button(
                                                 key: Key('close'),
                                                 label: 'Close',
                                                 onTap: (e) async {
-                                                  await controller.closeAccount();
-                                                }
-                                            ),
+                                                  await controller
+                                                      .closeAccount();
+                                                }),
                                           ],
                                         )
                                       ],
@@ -201,11 +265,16 @@ class SettingsPage extends StatelessWidget {
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                child: Text("Close Account", style: TextStyl.button(context),),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Close Account",
+                                  style: TextStyl.button(context),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -214,11 +283,16 @@ class SettingsPage extends StatelessWidget {
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                child: Text("Logout", style: TextStyl.button(context),),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 16),
+                                child: Text(
+                                  "Logout",
+                                  style: TextStyl.button(context),
+                                ),
                               ),
                             )
                           ],

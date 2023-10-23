@@ -7,7 +7,7 @@ import 'MockDashboardService.dart';
 
 abstract class DashboardService extends BaseService {
   /// Configure if Mock is enabled or not @accepts[true|false]
-  static const MOCK_ENABLED = true;
+  static const MOCK_ENABLED = false;
 
   /// Create and get the instance of [DashboardService]
   static DashboardService get instance {
@@ -16,5 +16,5 @@ abstract class DashboardService extends BaseService {
   }
 
   /// Do Something
-  Future<ApiResponse> doSomething({required String client});
+  Future<ApiResponse> updateNotificationToken(String client, String token, String type);
 }

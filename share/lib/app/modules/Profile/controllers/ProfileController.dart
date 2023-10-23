@@ -43,6 +43,7 @@ class ProfileController extends AppController {
   }
 
   Future<void> getData() async {
+    setBusy(true);
     var _client = "viewProfile";
     _profileService.init(_client);
     ApiResponse response = await _profileService.getData(_client);
@@ -52,6 +53,8 @@ class ProfileController extends AppController {
     nameInput.text = user.name!;
     emailInput.text = user.email!;
     phoneInput.text = user.phone!;
+
+    setBusy(false);
   }
 
   Future<void> submit() async {
