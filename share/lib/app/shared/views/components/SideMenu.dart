@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tomato/app/modules/Location/LocationModule.dart';
+import '/app/modules/Location/LocationModule.dart';
 
 import '/app/helpers/Global.dart';
 import '/app/modules/Dashboard/DashboardModule.dart';

@@ -26,12 +26,12 @@ class Config {
   ///======================================
   /// API base url
   ///======================================
-  static String apiBaseUrl = "https://6vdrm2alho.sharedwithexpose.com/api";
+  static String apiBaseUrl = "{{ url }}";
 
   ///======================================
   /// App Name
   ///======================================
-  static String appName = "Tomato";
+  static String appName = "{{ app_name }}";
 
   ///======================================
   /// Home/Dashboard URL [To be used to redirect user after login]

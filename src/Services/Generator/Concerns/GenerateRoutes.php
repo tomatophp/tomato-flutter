@@ -44,7 +44,7 @@ trait GenerateRoutes
             [
                 "module" => $this->module,
                 "moduleLower" => $this->moduleLower,
-                "table" => $this->table,
+                "table" => Str::of($this->table)->replace('_', '-')->lower(),
             ]
         );
 

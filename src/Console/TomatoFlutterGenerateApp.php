@@ -73,12 +73,10 @@ class TomatoFlutterGenerateApp extends Command
         if(!File::exists($assetsFolder)){
             File::copyDirectory(__DIR__.'/../../share/assets', $assetsFolder);
         }
-        if(File::exists($libFolder)){
-            File::deleteDirectory($libFolder);
+        if(!File::exists($libFolder)){
             File::copyDirectory(__DIR__.'/../../share/lib', $libFolder);
         }
-        if(File::exists($testFolder)){
-            File::deleteDirectory($testFolder);
+        if(!File::exists($testFolder)){
             File::copyDirectory(__DIR__.'/../../share/test', $testFolder);
         }
         if(!File::exists($packagesFolder)){
@@ -96,6 +94,22 @@ class TomatoFlutterGenerateApp extends Command
             ]
         );
 
+        $appConfigPath = base_path('/flutter/' . $name . '/lib/config/Config.dart');
+
+        //Delete App Service If Exists
+        if (File::exists($appConfigPath)) {
+            File::delete($appConfigPath);
+        }
+        //Create App Service
+        $this->generateStubs(
+            __DIR__ .'/../../stubs/config/Config.stub',
+            $appConfigPath,
+            [
+                "app_name" => $name,
+                "url" => url('/api'),
+            ]
+        );
+
         if($process->isSuccessful()){
             $process = new Process([
                 'flutter',
@@ -105,6 +119,7 @@ class TomatoFlutterGenerateApp extends Command
             $process->setWorkingDirectory(base_path('/flutter/' . $name));
             $process->run();
         }
+
 
         info('Your app is ready!');
     }

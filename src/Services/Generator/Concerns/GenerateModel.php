@@ -168,9 +168,9 @@ trait GenerateModel
             if($item['type'] === 'int'){
                 $tableFields .= "int? ".$this->handelName($item['name']).';';
             }
-//            else if($item['type'] === 'relation'){
-//
-//            }
+            else if($item['type'] === 'relation'){
+                $tableFields .= "int? ".$this->handelName($item['name']).';';
+            }
             else if($item['type'] === 'boolean'){
                 $tableFields .= "bool? ".$this->handelName($item['name']).';';
             }

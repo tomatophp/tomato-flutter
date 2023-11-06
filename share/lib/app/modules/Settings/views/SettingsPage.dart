@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tomato/app/modules/Modules.dart';
+import '/app/modules/Modules.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '/app/helpers/Global.dart';

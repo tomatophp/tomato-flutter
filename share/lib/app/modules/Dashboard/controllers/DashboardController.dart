@@ -1,4 +1,4 @@
-import 'package:tomato/app/helpers/Global.dart';
+import '/app/helpers/Global.dart';
 
 import '/config/Config.dart';
 
